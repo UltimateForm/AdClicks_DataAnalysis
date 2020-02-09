@@ -3,9 +3,16 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 data = pds.read_csv("Dataset.csv")
+data_np = data.to_numpy()
 y=data.iloc[:, 9].to_numpy()
 timespentonsite = data.iloc[:, 0].to_numpy()
 ages = data.iloc[:, 1].to_numpy() 
+areaIncome = data.iloc[:, 2] 
+gender = data.iloc[:, 6].to_numpy()
+males = np.where(gender==1)
+females = np.where(gender==0)
+clickers = data_np[np.where(y==1)]
+notclickers = data_np[np.where(y==0)]
 
 def chart_allTimeSpentOnSite():
   length = np.arange(len(timespentonsite))
@@ -29,9 +36,22 @@ def chart_timeSpentVsAge():
 
 
 def chart_areaIncomeVsClickedAd():
-  areaIncome = data.iloc[:, 2]
   plt.scatter(areaIncome, y)
   plt.title("Area Income vs Click Ad");
   plt.xlabel("Area Income")
   plt.ylabel("Clicked Ad")
+  plt.show()
+
+def chart_clickersVsGender():
+  maleclickers = np.where(clickers[:,6]==1)
+  femaleclickers = np.where(clickers[:,6]==0)
+  plt.bar(["Male", "Female"], [len(maleclickers[0]), len(femaleclickers[0])])
+  plt.title("Clickers by gender")
+  plt.show()
+  
+def chart_notClickersVsGender():
+  malenotclickers = np.where(notclickers[:,6]==1)
+  femalenotclickers = np.where(notclickers[:,6]==0)
+  plt.bar(["Male", "Female"], [len(malenotclickers[0]), len(femalenotclickers[0])],width=0.9)
+  plt.title("Not clickers by gender")
   plt.show()
