@@ -10,3 +10,6 @@ messing around with dataset from https://www.kaggle.com/fayomi/advertising#adver
 | accuracy     |           |        | 0.97     | 200     |
 | macro avg    | 0.98      | 0.97   | 0.97     | 200     |
 | weighted avg | 0.98      | 0.97   | 0.97     | 200     |
+
+
+without scaling...which is strange or lucky...
