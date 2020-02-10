@@ -13,3 +13,5 @@ messing around with dataset from https://www.kaggle.com/fayomi/advertising#adver
 
 
 without scaling...which is strange or lucky...
+
+ah, found it, scaling dilenma: https://stats.stackexchange.com/questions/172795/scaling-for-svm-destroys-my-results
