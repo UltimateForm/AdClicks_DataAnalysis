@@ -42,16 +42,40 @@ def chart_areaIncomeVsClickedAd():
   plt.ylabel("Clicked Ad")
   plt.show()
 
+
+maleclickers = np.where(clickers[:,6]==1)
+femaleclickers = np.where(clickers[:,6]==0)
+  
 def chart_clickersVsGender():
-  maleclickers = np.where(clickers[:,6]==1)
-  femaleclickers = np.where(clickers[:,6]==0)
   plt.bar(["Male", "Female"], [len(maleclickers[0]), len(femaleclickers[0])])
   plt.title("Clickers by gender")
   plt.show()
+
+malenotclickers = np.where(notclickers[:,6]==1)
+femalenotclickers = np.where(notclickers[:,6]==0)
   
 def chart_notClickersVsGender():
-  malenotclickers = np.where(notclickers[:,6]==1)
-  femalenotclickers = np.where(notclickers[:,6]==0)
-  plt.bar(["Male", "Female"], [len(malenotclickers[0]), len(femalenotclickers[0])],width=0.9)
+  plt.bar(["Male", "Female"], [len(malenotclickers[0]), len(femalenotclickers[0])])
   plt.title("Not clickers by gender")
   plt.show()
+
+def chart_clickersVsGenders():
+    fg,ax = plt.subplots()
+    indexes = np.arange(2)
+    barwidth = 0.3
+    opacity= 0.8
+    clickersbars = plt.bar(indexes,
+                           [len(maleclickers[0]), len(femaleclickers[0])], 
+                           alpha=opacity, 
+                           width=barwidth, 
+                           label="Did Click Ad")
+    notclickersbars = plt.bar(indexes+barwidth,
+                           [len(malenotclickers[0]), len(femalenotclickers[0])], 
+                           alpha=opacity, 
+                           width=barwidth, 
+                           label="Did not click Ad")
+    plt.title("Genders vs Clicked Ad")
+    plt.legend()
+    plt.xticks(indexes+barwidth/2, ["Male", "Female"])
+    plt.tight_layout()
+    plt.show()
