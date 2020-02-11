@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from data_main import timespentonsite, areaIncome, ages, y, maleclickers, femaleclickers, malenotclickers, femalenotclickers
-
+from data_main import data,timespentonsite, areaIncome, ages, y, maleclickers, femaleclickers, malenotclickers, femalenotclickers
+import seaborn as sns
 
 ##I REALLY DONT NEED TO BE DOING ALL THIS SINCE THERE ARE EASIER WAYS
 ##BUT I WANNA FCK WITH PYPLOTLIB
@@ -67,3 +67,7 @@ def chart_clickersVsGenders():
     plt.xticks(indexes+barwidth/2, ["Male", "Female"])
     plt.tight_layout()
     plt.show()
+    
+sns.pairplot(data, hue = 'Clicked on Ad', vars = 
+             ['Daily Time Spent on Site', 'Age', 'Area Income', 'Daily Internet Usage'], 
+             palette = 'husl')
