@@ -1,6 +1,6 @@
 from sklearn.model_selection import train_test_split
 from data_main import X, y
-from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.compose import ColumnTransformer
 from sklearn.svm import SVC
 import pandas as pd
@@ -18,6 +18,10 @@ X=X.to_numpy()
 y=y.to_numpy()
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+"""scaler = StandardScaler().fit(X_train)
+X_train = scaler.transform(X_train)
+X_test = scaler.transform(X_test)"""
 #X_sklearnencoding = column_transformer.fit_transform(X).toarray()
 
 classifier = SVC(kernel="linear", gamma="auto").fit(X_train, y_train)
