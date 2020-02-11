@@ -12,6 +12,8 @@ messing around with dataset from https://www.kaggle.com/fayomi/advertising#adver
 | weighted avg | 0.98      | 0.97   | 0.97     | 200     |
 
 
-without scaling...which is strange or lucky...
+~~without scaling...which is strange or lucky...~~
 
-ah, found it, scaling dilenma: https://stats.stackexchange.com/questions/172795/scaling-for-svm-destroys-my-results
+~~ah, found it, scaling dilenma: https://stats.stackexchange.com/questions/172795/scaling-for-svm-destroys-my-results~~
+
+although true, in my case it was simply a case of features with high P Values and low coefficients polluting the model, after removing them: feature scaling no longer decreased the scores, it increased them!
